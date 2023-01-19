@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.*;
+import java.util.Comparator;
 
 /**
  * Created by LaunchCode
@@ -80,7 +81,6 @@ public class JobData {
                 jobs.add(row);
             }
         }
-
         return jobs;
     }
 
@@ -95,14 +95,12 @@ public class JobData {
         // load data, if not already loaded
         loadData();
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
-        for(int i = 0; i < allJobs.size();i++){
-            HashMap<String, String> eachJob = allJobs.get(i);;
-            for (String job : eachJob.values()){
-                if(job.toLowerCase().contains(value.toLowerCase())&& !jobs.contains(allJobs.get(i))){
-                    jobs.add(allJobs.get(i));
+        for (HashMap<String, String> eachJob : allJobs) {
+            for (String categoryValues : eachJob.values()) {
+                if (categoryValues.toLowerCase().contains(value.toLowerCase()) && !jobs.contains(eachJob)) {
+                    jobs.add(eachJob);
                 }
             }
-
         }
         return jobs;
         // TODO - implement this method

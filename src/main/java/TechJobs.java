@@ -120,11 +120,10 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
         if (someJobs.size() > 0) {
-            for (int i = 0; i < someJobs.size(); i++) {
+            for (HashMap<String, String> someJob : someJobs) {
                 System.out.println("*****");
-                HashMap<String, String> jobs = someJobs.get(i);
-                for (Map.Entry<String, String> job : jobs.entrySet()) {
-                    System.out.println(job.getKey() + ": " + job.getValue());
+                for (Map.Entry<String, String> category : someJob.entrySet()) {
+                    System.out.println(category.getKey() + ": " + category.getValue());
                 }
                 System.out.println("*****\n");
             }
